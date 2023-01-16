@@ -65,7 +65,6 @@ carsRouter.put("/:id", async (req: Request, res: Response) => {
         const query = { _id: new ObjectId(id) };
 
         const result = await collections.cars.updateOne(query, { $set: updatedCar });
-        console.log(result);
         (result.matchedCount > 0 && result.modifiedCount > 0)
             ? res.status(200).send(`Successfully updated car with id ${id}`)
             : res.status(304).send(`Car with id: ${id} not updated`);
